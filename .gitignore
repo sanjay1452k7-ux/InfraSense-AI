@@ -1,0 +1,32 @@
+# Virtual Environment
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# YOLO outputs
+runs/
+
+# Model weights
+*.pt
+
+# Datasets
+dataset/
+datasets/
+*.zip
+
+# Generated files
+damage_report.json
+
+# Images (optional)
+# test.jpg
+
+# VS Code
+.vscode/
+
+# Environment variables
+.env
+
+# Logs
+*.log
