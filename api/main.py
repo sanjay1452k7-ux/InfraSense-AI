@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Header, HTTPException
 from ultralytics import YOLO
 import shutil
 import os
@@ -10,7 +10,15 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# ============================
+# API KEY
+# Change this to your own secret key
+# ============================
+API_KEY = "InfraSenseAI2026"
+
+# ============================
 # Load trained model
+# ============================
 model = YOLO("runs/detect/runs/road_damage/weights/best.pt")
 
 
@@ -22,7 +30,19 @@ def home():
 
 
 @app.post("/predict")
-async def predict(file: UploadFile = File(...)):
+async def predict(
+    file: UploadFile = File(...),
+    x_api_key: str = Header(...)
+):
+
+    # ============================
+    # API Key Authentication
+    # ============================
+    if x_api_key != API_KEY:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid API Key"
+        )
 
     os.makedirs("temp", exist_ok=True)
 
@@ -31,7 +51,9 @@ async def predict(file: UploadFile = File(...)):
     with open(image_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    # Same prediction settings as predict.py
+    # ============================
+    # Run Prediction
+    # ============================
     results = model.predict(
         source=image_path,
         conf=0.10,
@@ -112,6 +134,10 @@ async def predict(file: UploadFile = File(...)):
                 int(y2)
             ]
         })
+
+    # Delete uploaded image after prediction
+    if os.path.exists(image_path):
+        os.remove(image_path)
 
     return {
         "total_damages": len(damage_report),
