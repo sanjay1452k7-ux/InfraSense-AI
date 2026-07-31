@@ -1,32 +1,56 @@
+# ==========================
 # Virtual Environment
+# ==========================
 venv/
 
+# ==========================
 # Python
+# ==========================
 __pycache__/
 *.pyc
 
-# YOLO outputs
+# ==========================
+# YOLO Outputs (generated during prediction/training)
+# ==========================
 runs/
 
-# Model weights
+# ==========================
+# Trained Model
+# Keep models/best.pt in GitHub
+# ==========================
 *.pt
+!models/
+!models/best.pt
 
+# ==========================
 # Datasets
+# ==========================
 dataset/
 datasets/
 *.zip
 
-# Generated files
+# ==========================
+# Generated Files
+# ==========================
 damage_report.json
+temp/
 
-# Images (optional)
+# ==========================
+# Test Images (optional)
+# ==========================
 # test.jpg
 
+# ==========================
 # VS Code
+# ==========================
 .vscode/
 
-# Environment variables
+# ==========================
+# Environment Variables
+# ==========================
 .env
 
+# ==========================
 # Logs
+# ==========================
 *.log
