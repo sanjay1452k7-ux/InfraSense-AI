@@ -6,7 +6,7 @@ import random
 # -------------------------------
 # Load Trained Model
 # -------------------------------
-model = YOLO("runs/detect/runs/road_damage/weights/best.pt")
+model = YOLO("models/best.pt")
 
 # -------------------------------
 # Input Image
