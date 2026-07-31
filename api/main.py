@@ -19,7 +19,7 @@ API_KEY = "InfraSenseAI2026"
 # ============================
 # Load trained model
 # ============================
-model = YOLO("runs/detect/runs/road_damage/weights/best.pt")
+model = YOLO("models/best.pt")
 
 
 @app.get("/")
