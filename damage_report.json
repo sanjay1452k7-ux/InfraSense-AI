@@ -1,0 +1,19 @@
+{
+    "total_damages": 1,
+    "detections": [
+        {
+            "damage_type": "crackedroads",
+            "confidence_score": 98.84,
+            "severity": "High",
+            "priority": "High",
+            "estimated_repair_cost": 587944,
+            "estimated_repair_time": "3 Days",
+            "bounding_box": [
+                231,
+                211,
+                482,
+                448
+            ]
+        }
+    ]
+}

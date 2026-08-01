@@ -1,0 +1,12 @@
+path: dataset
+
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 3
+
+names:
+  0: crackedroads
+  1: damageroad
+  2: pothole
